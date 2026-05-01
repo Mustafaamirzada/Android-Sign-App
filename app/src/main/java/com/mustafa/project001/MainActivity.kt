@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mustafa.project001.navigation.BottomNavigationBar
 import com.mustafa.project001.ui.screens.CameraScreen
+import com.mustafa.project001.ui.screens.Dictionary
 import com.mustafa.project001.ui.screens.HomeScreen
 import com.mustafa.project001.ui.screens.ProfileScreen
 
@@ -79,6 +80,8 @@ fun MainScreen() {
                     composable("home") { HomeScreen() }
                     // Define the Camera Destination Composable
                     composable("camera") { CameraScreen() }
+
+                    composable("dictionary") { Dictionary() }
                     // Define the Profile Destination Composable
                     composable("profile") { ProfileScreen() }
                 }

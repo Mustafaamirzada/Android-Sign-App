@@ -5,4 +5,5 @@ sealed class NavRoute(val path: String) {
     object Camera: NavRoute("camera")
     object Profile: NavRoute("profile")
 
+    object Dictionary: NavRoute("dictionary")
 }

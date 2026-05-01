@@ -3,6 +3,7 @@ package com.mustafa.project001.ui.screens
 import androidx.compose.runtime.Composable
 import com.google.accompanist.permissions.rememberPermissionState
 import android.Manifest
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -103,6 +104,7 @@ fun CameraScreen() {
 }
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CameraPreview(viewModel: CameraViewModel) {

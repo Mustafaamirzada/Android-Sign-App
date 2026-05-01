@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     // The items of the navigation bar
-    val navItems = listOf(NavItem.Home, NavItem.Camera, NavItem.Profile)
+    val navItems = listOf(NavItem.Home, NavItem.Camera, NavItem.Profile, NavItem.Dictionary)
 
     // sync between navigation bar and current screen
     val navBackStackEntry by navController.currentBackStackEntryAsState()
