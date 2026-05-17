@@ -17,13 +17,17 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mustafa.project001.navigation.BottomNavigationBar
+import com.mustafa.project001.ui.components.SearchScreen
 import com.mustafa.project001.ui.screens.CameraScreen
-import com.mustafa.project001.ui.screens.Dictionary
+import com.mustafa.project001.ui.screens.DictionaryScreen
 import com.mustafa.project001.ui.screens.HomeScreen
-import com.mustafa.project001.ui.screens.ProfileScreen
+import com.mustafa.project001.ui.screens.SingleWordSign
+import java.net.URLDecoder
 
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +62,6 @@ fun MainScreen() {
     val navController = rememberNavController()
     Surface(
         modifier = Modifier.fillMaxSize(),
-//        color = Color.Black.copy(alpha = 0.8f)
     ) {
         Scaffold(
             containerColor = Color.Transparent,
@@ -74,16 +77,38 @@ fun MainScreen() {
                 // Define the nav Graph, start destination & composable destination
                 NavHost(
                     navController = navController,
-                    startDestination = "camera"
+                    startDestination = "dictionary"
                 ){
                     // The Home Screen
                     composable("home") { HomeScreen() }
                     // Define the Camera Destination Composable
                     composable("camera") { CameraScreen() }
 
-                    composable("dictionary") { Dictionary() }
-                    // Define the Profile Destination Composable
-                    composable("profile") { ProfileScreen() }
+                    composable("dictionary") { DictionaryScreen(
+                        navController = navController
+                    ) }
+
+                    composable("mainDic") {
+                        DictionaryScreen(navController = navController)
+                    }
+
+                    composable ("search"){
+                        SearchScreen(navController = navController)
+                    }
+
+
+                    composable(
+                        route = "singleWord/{word}",
+                        arguments = listOf(navArgument("word") { type = NavType.StringType })
+                    ) { backStackEntry ->
+
+                        val word = URLDecoder.decode(
+                            backStackEntry.arguments?.getString("word") ?: "",
+                            "UTF-8"
+                        )
+
+                        SingleWordSign(navController, word)
+                    }
                 }
             }
 

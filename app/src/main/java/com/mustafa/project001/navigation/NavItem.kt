@@ -1,8 +1,10 @@
 package com.mustafa.project001.navigation
 
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.Factory
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -22,6 +24,11 @@ sealed class NavItem {
     object Dictionary:
             Item(NavRoute.Dictionary.path.toString(),
                 "Dictionary", Icons.Default.Book
+            )
+
+    object Production:
+            Item(NavRoute.Production.path.toString(),
+                "Production", Icons.Default.Factory
             )
 }
 
